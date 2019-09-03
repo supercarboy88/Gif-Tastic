@@ -1,18 +1,20 @@
 var topics = ["cat", "dog", "horse"];
 
 function topicsButton (){
+    $("#topics").empty();
     for (i=0; i < topics.length; i++){
     var topicButton = $("<button>");
-    var topicName = topics[i];
-    topicButton.attr("topic", topicName);
-    topicButton.text(topicName);
+    topicButton.addClass("topic-btn btn btn-primary btn-lg")
+    topicButton.attr("topic", topics[i]);
+    topicButton.text(topics[i]);
     $("#topics").append(topicButton);
     }
 }
 
 topicsButton(topics);
 
-$("button").on("click", function() {
+$(document).on("click", ".topic-btn", function() {
+    $("#gifs-appear-here").empty();
     // In this case, the "this" keyword refers to the button that was clicked
     var topicName = $(this).attr("topic");
     console.log(topicName);
@@ -37,7 +39,7 @@ $("button").on("click", function() {
           // Only taking action if the photo has an appropriate rating
           if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
             // Creating a div for the gif
-            var gifDiv = $("<div>");
+            var gifDiv = $("<div class='image-content'>");
 
             // Storing the result item's rating
             var rating = results[i].rating;
@@ -54,7 +56,7 @@ $("button").on("click", function() {
             personImage.attr("data-still", results[i].images.fixed_height_still.url);
             personImage.attr("data-animate", results[i].images.fixed_height.url);
             personImage.attr("data-state", "still");
-            personImage.addClass("gif");
+            personImage.addClass("image-btn");
 
             // Appending the paragraph and personImage we created to the "gifDiv" div we created
             gifDiv.append(p);
@@ -67,17 +69,27 @@ $("button").on("click", function() {
       });
   });
 
-      $(".gif").on("click", function() {
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-      }
-    });
+$(document).on("click",".image-btn", function() {
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+    $(this).attr("id", 'animate-btn');
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+    $(this).attr("id", 'state-btn')
+  }
+});
+
+$("#addSearch").on("click", function(){
+  var newSearch = $("input").eq(0).val();
+  topics.push(newSearch);
+  topicsButton(topics);
+  console.log(topics);
+  return false;
+})

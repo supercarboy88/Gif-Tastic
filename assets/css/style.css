@@ -1,0 +1,38 @@
+#app-title {
+    font-size: 30px;
+    margin: 20px;
+
+}
+.row {
+    margin-top: 30px;
+    margin-left: 0;
+}
+
+.topic-btn {
+    margin: 5px;
+    height: 30px;
+    height: auto;
+    display: block;
+    float:right;
+}
+
+
+.image-content {
+    float: left;
+    display: block;
+    margin-left: 10px;
+}
+
+
+.image-btn {
+    border: solid 10px #cccc;
+    margin: 5px;
+}
+
+#state-btn {
+    border: solid 10px green;
+}
+
+#animate-btn {
+    border: solid 10px red; 
+}

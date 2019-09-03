@@ -11,26 +11,40 @@
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Link to Css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Reset Css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
 <body>
+    <header>
     <!-- Title -->
-    <h1>Nick GIF TASTIC</h1>
+    <h1 class="text-center" id = "app-title">Nick GIF TASTIC</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <form id = "search-form">
+                    <label for = "search-input">Add in your new search</label>
+                    <input type = "text" id = "search-input"><br>
+                    <input id = "addSearch" type = "submit" value = "Submit" class="text-center btn btn-success">
+            </form>
+        </div>
 
-    <!-- GIF LIST -->
-    <div id="topics"></div>
+        <div class="row">
+                <div class="col-md-2">
+                    <!-- GIF LIST -->
+                    <div id="topics"></div>
+                </div>
+                <div class="col-md-10">
+                    <div id="gifs-appear-here"></div>
+                </div>
+        </div>
 
-    <form id = "search-form">
-        <label for = "search-input">Add in your new search</label>
-        <input type = "text" id = "search-input"><br>
-        <input id = "addSearch" type = "submit" value = "Submit">
-    </form>
-    
-
-    <div id="gifs-appear-here">
     </div>
 
 
-<script type="text/javascript" src="assets/Javascript/app1.js">
+
+<script type="text/javascript" src="assets/Javascript/app.js">
 </script>    
 </body>
 </html>
