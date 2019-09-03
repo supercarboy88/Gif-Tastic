@@ -1,18 +1,21 @@
+// initial array of strings
 var topics = ["SeaHawks", "Seattle Sonics", "Seattle Sounders"];
-
+// create a function to make buttons
 function topicsButton (){
     $("#topics").empty();
+    // Looping through the array of topics
     for (i=0; i < topics.length; i++){
-    var topicButton = $("<button>");
-    topicButton.addClass("topic-btn btn btn-primary btn-lg")
-    topicButton.attr("topic", topics[i]);
-    topicButton.text(topics[i]);
-    $("#topics").append(topicButton);
+      //Dynamically generating buttons fo each topic in the array
+        var topicButton = $("<button>");
+        topicButton.addClass("topic-btn btn btn-primary btn-lg")
+        topicButton.attr("topic", topics[i]);
+        topicButton.text(topics[i]);
+        $("#topics").append(topicButton);
     }
 }
 
 topicsButton(topics);
-
+// Adding click event listen listener to all buttons
 $(document).on("click", ".topic-btn", function() {
     $("#gifs-appear-here").empty();
     // In this case, the "this" keyword refers to the button that was clicked
@@ -86,18 +89,22 @@ $(document).on("click",".image-btn", function() {
   }
 });
 
+// Creating an  event handler function to show user input as a topicBtn when add-topic button is clicked
 $("#addSearch").on("click", function(event){
   event.preventDefault();
+  //Grabbing the input from the textbox
   var newSearch = $("input").eq(0).val();
+  // Creating a variable to check empty input
   var emptyinput = document.forms["search-form"]["search-input"].value;
+  // Checking if there is an empty input
+	// If yes - ask user to input again
   if (emptyinput == ""){
     alert("Please input your favorite Sport team"); 
   } else{
+    //Adding new input from usesr into topics array
     topics.push(newSearch);
     topicsButton(topics);
     console.log(topics);
     return false;
-
   }
-
 })
