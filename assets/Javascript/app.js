@@ -1,4 +1,4 @@
-var topics = ["cat", "dog", "horse"];
+var topics = ["SeaHawks", "Seattle Sonics", "Seattle Sounders"];
 
 function topicsButton (){
     $("#topics").empty();
@@ -86,10 +86,18 @@ $(document).on("click",".image-btn", function() {
   }
 });
 
-$("#addSearch").on("click", function(){
+$("#addSearch").on("click", function(event){
+  event.preventDefault();
   var newSearch = $("input").eq(0).val();
-  topics.push(newSearch);
-  topicsButton(topics);
-  console.log(topics);
-  return false;
+  var emptyinput = document.forms["search-form"]["search-input"].value;
+  if (emptyinput == ""){
+    alert("Please input your favorite Sport team"); 
+  } else{
+    topics.push(newSearch);
+    topicsButton(topics);
+    console.log(topics);
+    return false;
+
+  }
+
 })

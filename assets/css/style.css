@@ -1,7 +1,9 @@
 #app-title {
     font-size: 30px;
     margin: 20px;
-
+    text-align: center;
+    color: black;
+    font-family: 'BioRhyme', serif;
 }
 .row {
     margin-top: 30px;
@@ -28,11 +30,14 @@
     border: solid 10px #cccc;
     margin: 5px;
 }
+#label1{
+    font-size: 20px;
+}
 
 #state-btn {
-    border: solid 10px green;
+    border: solid 10px red;
 }
 
 #animate-btn {
-    border: solid 10px red; 
+    border: solid 10px green; 
 }
